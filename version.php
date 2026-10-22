@@ -25,7 +25,7 @@
 defined('MOODLE_INTERNAL') || die();
 
 $plugin->component = 'local_learninglens';
-$plugin->version   = 2026102207;
+$plugin->version   = 2026102208;
 $plugin->requires  = 2024100700; // Moodle 4.5.
 $plugin->supported = [405, 500];
 $plugin->release   = '1.0.0';

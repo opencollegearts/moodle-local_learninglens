@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="pix/icon.png" alt="OCA Learning Lens" width="160" height="160">
+</p>
+
 # OCA Learning Lens (`local_learninglens`)
 
 **Short description:** Learning Lens is a floating on-page menu so learners can adjust contrast, text, reading aids, and read-aloud on the current Moodle page.
