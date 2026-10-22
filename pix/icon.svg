@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-hidden="true">
+  <!-- Universal access symbol (Font Awesome-style) for the plugin list icon. -->
+  <circle cx="256" cy="256" r="200" fill="none" stroke="currentColor" stroke-width="36"/>
+  <circle cx="256" cy="140" r="44" fill="currentColor"/>
+  <path fill="currentColor" d="M96 228c0-18 14-32 32-32h256c18 0 32 14 32 32s-14 32-32 32h-80v40l72 120c10 16 4 36-12 46s-36 4-46-12l-62-104-62 104c-10 16-30 22-46 12s-22-30-12-46l72-120v-40h-80c-18 0-32-14-32-32z"/>
+</svg>

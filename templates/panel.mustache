@@ -1,0 +1,149 @@
+{{!
+    This file is part of Moodle - http://moodle.org/
+
+    Moodle is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Moodle is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+}}
+{{!
+    @template local_learninglens/panel
+
+    Learning Lens adjustments dialog.
+
+    @copyright 2026 Paul Vincent <paulvincent@oca-uk.com>
+    @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+
+    Example context (json):
+    {
+        "hasstatement": true,
+        "statementurl": "https://example.edu/accessibility",
+        "showcontrast": true,
+        "strings": {
+            "paneltitle": "Learning Lens",
+            "close": "Close"
+        }
+    }
+}}
+<div id="local-learninglens-panel"
+     class="local-learninglens-panel"
+     role="dialog"
+     aria-modal="true"
+     aria-labelledby="local-learninglens-title"
+     hidden>
+    <div class="local-learninglens-header">
+        <div class="local-learninglens-header-text">
+            <h2 id="local-learninglens-title" class="local-learninglens-title">{{strings.paneltitle}}</h2>
+            <p class="local-learninglens-shortcut">{{strings.shortcut}}</p>
+        </div>
+        <button type="button" class="local-learninglens-close" data-action="close" aria-label="{{strings.close}}">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="local-learninglens-grid">
+        {{#showcontrast}}
+        <button type="button" class="local-learninglens-card" data-feature="contrast" aria-pressed="false">
+            <span class="local-learninglens-card-icon" aria-hidden="true">
+                <svg viewBox="0 0 32 32" focusable="false"><circle cx="16" cy="16" r="12" fill="none" stroke="currentColor" stroke-width="2"></circle><path d="M16 4a12 12 0 0 0 0 24z" fill="currentColor"></path></svg>
+            </span>
+            <span class="local-learninglens-card-label">{{strings.contrast}}</span>
+            <span class="local-learninglens-card-state" data-state></span>
+        </button>
+        {{/showcontrast}}
+        {{#showdyslexia}}
+        <button type="button" class="local-learninglens-card" data-feature="dyslexia" aria-pressed="false">
+            <span class="local-learninglens-card-icon" aria-hidden="true">
+                <svg viewBox="0 0 32 32" focusable="false"><text x="16" y="22" text-anchor="middle" font-size="16" font-weight="700" fill="currentColor">Df</text></svg>
+            </span>
+            <span class="local-learninglens-card-label">{{strings.dyslexia}}</span>
+        </button>
+        {{/showdyslexia}}
+        {{#showspacing}}
+        <button type="button" class="local-learninglens-card" data-feature="spacing" aria-pressed="false">
+            <span class="local-learninglens-card-icon" aria-hidden="true">
+                <svg viewBox="0 0 32 32" focusable="false"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M6 10h20M6 16h20M6 22h20"></path><path fill="none" stroke="currentColor" stroke-width="1.5" d="M4 8v16M28 8v16"></path></svg>
+            </span>
+            <span class="local-learninglens-card-label">{{strings.spacing}}</span>
+        </button>
+        {{/showspacing}}
+        {{#showlinks}}
+        <button type="button" class="local-learninglens-card" data-feature="links" aria-pressed="false">
+            <span class="local-learninglens-card-icon" aria-hidden="true">
+                <svg viewBox="0 0 32 32" focusable="false"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M13 19l-2 2a5 5 0 1 1-7-7l2-2M19 13l2-2a5 5 0 1 1 7 7l-2 2M12 20l8-8"></path></svg>
+            </span>
+            <span class="local-learninglens-card-label">{{strings.links}}</span>
+        </button>
+        {{/showlinks}}
+        {{#showtextsize}}
+        <button type="button" class="local-learninglens-card" data-feature="textsize" aria-pressed="false">
+            <span class="local-learninglens-card-icon" aria-hidden="true">
+                <svg viewBox="0 0 32 32" focusable="false"><text x="4" y="24" font-size="12" fill="currentColor">T</text><text x="14" y="24" font-size="18" font-weight="700" fill="currentColor">T</text></svg>
+            </span>
+            <span class="local-learninglens-card-label">{{strings.textsize}}</span>
+            <span class="local-learninglens-card-state" data-state></span>
+        </button>
+        {{/showtextsize}}
+        {{#showpauseanim}}
+        <button type="button" class="local-learninglens-card" data-feature="pauseanim" aria-pressed="false">
+            <span class="local-learninglens-card-icon" aria-hidden="true">
+                <svg viewBox="0 0 32 32" focusable="false"><rect x="10" y="8" width="4" height="16" rx="1" fill="currentColor"></rect><rect x="18" y="8" width="4" height="16" rx="1" fill="currentColor"></rect></svg>
+            </span>
+            <span class="local-learninglens-card-label">{{strings.pauseanim}}</span>
+        </button>
+        {{/showpauseanim}}
+        {{#showhideimages}}
+        <button type="button" class="local-learninglens-card" data-feature="hideimages" aria-pressed="false">
+            <span class="local-learninglens-card-icon" aria-hidden="true">
+                <svg viewBox="0 0 32 32" focusable="false"><rect x="5" y="8" width="22" height="16" rx="2" fill="none" stroke="currentColor" stroke-width="2"></rect><circle cx="12" cy="14" r="2" fill="currentColor"></circle><path fill="none" stroke="currentColor" stroke-width="2" d="M8 22l6-6 4 4 3-3 6 5"></path><path stroke="currentColor" stroke-width="2" d="M7 7l18 18"></path></svg>
+            </span>
+            <span class="local-learninglens-card-label">{{strings.hideimages}}</span>
+        </button>
+        {{/showhideimages}}
+        {{#showreadingguide}}
+        <button type="button" class="local-learninglens-card" data-feature="readingguide" aria-pressed="false">
+            <span class="local-learninglens-card-icon" aria-hidden="true">
+                <svg viewBox="0 0 32 32" focusable="false"><path fill="none" stroke="currentColor" stroke-width="2" d="M6 8h20M6 14h20M6 24h20"></path><rect x="4" y="17" width="24" height="5" fill="currentColor" opacity="0.35"></rect></svg>
+            </span>
+            <span class="local-learninglens-card-label">{{strings.readingguide}}</span>
+        </button>
+        {{/showreadingguide}}
+        {{#showreadingmask}}
+        <button type="button" class="local-learninglens-card" data-feature="readingmask" aria-pressed="false">
+            <span class="local-learninglens-card-icon" aria-hidden="true">
+                <svg viewBox="0 0 32 32" focusable="false"><rect x="4" y="4" width="24" height="8" fill="currentColor" opacity="0.35"></rect><rect x="4" y="20" width="24" height="8" fill="currentColor" opacity="0.35"></rect><rect x="4" y="13" width="24" height="6" fill="none" stroke="currentColor" stroke-width="1.5"></rect></svg>
+            </span>
+            <span class="local-learninglens-card-label">{{strings.readingmask}}</span>
+        </button>
+        {{/showreadingmask}}
+        {{#showreadaloud}}
+        <button type="button" class="local-learninglens-card" data-feature="readaloud" aria-pressed="false">
+            <span class="local-learninglens-card-icon" aria-hidden="true">
+                <svg viewBox="0 0 32 32" focusable="false"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M8 12v8M12 9v14M16 6v20M20 9v14M24 12v8"></path></svg>
+            </span>
+            <span class="local-learninglens-card-label">{{strings.readaloud}}</span>
+            <span class="local-learninglens-card-state" data-state></span>
+        </button>
+        <button type="button" class="local-learninglens-card" data-feature="speechrate" aria-pressed="false">
+            <span class="local-learninglens-card-icon" aria-hidden="true">
+                <svg viewBox="0 0 32 32" focusable="false"><circle cx="16" cy="16" r="11" fill="none" stroke="currentColor" stroke-width="2"></circle><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M16 16l6-4"></path></svg>
+            </span>
+            <span class="local-learninglens-card-label">{{strings.speechrate}}</span>
+            <span class="local-learninglens-card-state" data-state></span>
+        </button>
+        {{/showreadaloud}}
+    </div>
+    <div class="local-learninglens-footer">
+        <button type="button" class="local-learninglens-reset" data-action="reset">{{strings.reset}}</button>
+        {{#hasstatement}}
+        <a class="local-learninglens-statement" href="{{statementurl}}">{{strings.statement}}</a>
+        {{/hasstatement}}
+    </div>
+</div>

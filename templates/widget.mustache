@@ -1,0 +1,64 @@
+{{!
+    This file is part of Moodle - http://moodle.org/
+
+    Moodle is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Moodle is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+}}
+{{!
+    @template local_learninglens/widget
+
+    Floating Learning Lens launcher and panel.
+
+    @copyright 2026 Paul Vincent <paulvincent@oca-uk.com>
+    @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+
+    Example context (json):
+    {
+        "position": "left",
+        "statementurl": "https://example.edu/accessibility",
+        "hasstatement": true,
+        "showcontrast": true,
+        "showdyslexia": true,
+        "showspacing": true,
+        "showlinks": true,
+        "showtextsize": true,
+        "showpauseanim": true,
+        "showhideimages": true,
+        "showreadingguide": true,
+        "showreadingmask": true,
+        "showreadaloud": true,
+        "strings": {
+            "launcher": "Learning Lens",
+            "paneltitle": "Learning Lens",
+            "shortcut": "Keyboard shortcut: Alt+Shift+A",
+            "close": "Close",
+            "reset": "Reset all",
+            "statement": "Accessibility statement",
+            "contrast": "Contrast",
+            "dyslexia": "Dyslexia friendly",
+            "spacing": "Text spacing",
+            "links": "Highlight links",
+            "textsize": "Bigger text",
+            "pauseanim": "Pause animations",
+            "hideimages": "Hide images",
+            "readingguide": "Reading guide",
+            "readingmask": "Reading mask",
+            "readaloud": "Read aloud",
+            "speechrate": "Speech speed"
+        }
+    }
+}}
+<div id="local-learninglens" class="local-learninglens local-learninglens--{{position}}">
+    {{> local_learninglens/launcher}}
+    {{> local_learninglens/panel}}
+</div>

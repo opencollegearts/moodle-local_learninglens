@@ -1,0 +1,607 @@
+/**
+ * Styles for local_learninglens.
+ *
+ * Keep selectors tightly scoped. Avoid anything that could affect
+ * global layout or navigation.
+ *
+ * @package    local_learninglens
+ * @copyright  2026 Paul Vincent <paulvincent@oca-uk.com>
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ */
+
+@font-face {
+    font-family: "OpenDyslexic";
+    src: url([[font:local_learninglens|OpenDyslexic-Regular.woff2]]) format("woff2");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "OpenDyslexic";
+    src: url([[font:local_learninglens|OpenDyslexic-Bold.woff2]]) format("woff2");
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* -------------------------------------------------------------------------
+   Widget chrome
+   ------------------------------------------------------------------------- */
+
+#local-learninglens .visually-hidden,
+#local-learninglens .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+#local-learninglens {
+    position: fixed;
+    bottom: 1.25rem;
+    z-index: 1900;
+    font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+    font-size: 14px;
+    line-height: 1.3;
+    letter-spacing: normal;
+    word-spacing: normal;
+    color: #10232e;
+    pointer-events: none;
+}
+
+#local-learninglens.local-learninglens--left {
+    left: 1.25rem;
+    right: auto;
+}
+
+#local-learninglens.local-learninglens--right {
+    right: 1.25rem;
+    left: auto;
+}
+
+#local-learninglens *,
+#local-learninglens *::before,
+#local-learninglens *::after {
+    box-sizing: border-box;
+    letter-spacing: normal;
+    word-spacing: normal;
+}
+
+.local-learninglens-launcher,
+.local-learninglens-panel,
+.local-learninglens-close,
+.local-learninglens-card,
+.local-learninglens-reset {
+    pointer-events: auto;
+}
+
+.local-learninglens-launcher {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 56px;
+    height: 56px;
+    padding: 0;
+    border: 0;
+    border-radius: 50%;
+    background: #1b3a4b;
+    color: #fff;
+    box-shadow: 0 4px 16px rgba(16, 35, 46, 0.35);
+    cursor: pointer;
+}
+
+.local-learninglens-launcher:hover,
+.local-learninglens-launcher:focus {
+    background: #27485c;
+}
+
+.local-learninglens-launcher:focus-visible {
+    outline: 3px solid #e3b23c;
+    outline-offset: 3px;
+}
+
+.local-learninglens-launcher .local-learninglens-launcher-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+    width: 1em;
+    height: 1em;
+    max-width: none;
+    max-height: none;
+    font-size: 1.7rem;
+    line-height: 1;
+    color: inherit;
+}
+
+.local-learninglens-launcher .local-learninglens-launcher-icon::before {
+    display: block;
+    margin: 0;
+    line-height: 1;
+}
+
+.local-learninglens-panel[hidden] {
+    display: none !important;
+}
+
+.local-learninglens-panel {
+    position: fixed;
+    bottom: 5.5rem;
+    display: flex;
+    flex-direction: column;
+    width: min(22.5rem, calc(100vw - 2rem));
+    max-height: min(36rem, calc(100vh - 7rem));
+    overflow: hidden;
+    background: #fff;
+    color: #10232e;
+    border-radius: 12px;
+    box-shadow: 0 10px 32px rgba(16, 35, 46, 0.28);
+    filter: none;
+}
+
+.local-learninglens--left .local-learninglens-panel {
+    left: 1.25rem;
+    right: auto;
+}
+
+.local-learninglens--right .local-learninglens-panel {
+    right: 1.25rem;
+    left: auto;
+}
+
+.local-learninglens-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 0.75rem;
+    padding: 0.9rem 0.9rem 0.75rem;
+    background: #1b3a4b;
+    color: #fff;
+    border-radius: 12px 12px 0 0;
+}
+
+.local-learninglens-title {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 650;
+    color: #fff;
+}
+
+.local-learninglens-shortcut {
+    margin: 0.25rem 0 0;
+    font-size: 12px;
+    opacity: 0.85;
+}
+
+.local-learninglens-close {
+    flex: 0 0 auto;
+    width: 2rem;
+    height: 2rem;
+    border: 0;
+    border-radius: 6px;
+    background: transparent;
+    color: #fff;
+    font-size: 1.5rem;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.local-learninglens-close:hover,
+.local-learninglens-close:focus-visible {
+    background: rgba(255, 255, 255, 0.15);
+    outline: none;
+}
+
+.local-learninglens-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.55rem;
+    padding: 0.85rem;
+    overflow: auto;
+    flex: 1 1 auto;
+}
+
+.local-learninglens-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 0.35rem;
+    min-height: 6.25rem;
+    margin: 0;
+    padding: 0.65rem 0.4rem 0.5rem;
+    border: 1px solid #d5dde3;
+    border-radius: 10px;
+    background: #fff;
+    color: #10232e;
+    text-align: center;
+    cursor: pointer;
+}
+
+.local-learninglens-card:hover {
+    border-color: #1b3a4b;
+}
+
+.local-learninglens-card:focus-visible {
+    outline: 3px solid #1b3a4b;
+    outline-offset: 2px;
+}
+
+.local-learninglens-card.is-active,
+.local-learninglens-card[aria-pressed="true"] {
+    border-color: #1b3a4b;
+    background: #e8f1f4;
+    box-shadow: inset 0 0 0 2px #1b3a4b;
+}
+
+.local-learninglens-card-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    color: #1b3a4b;
+}
+
+.local-learninglens-card-icon svg {
+    width: 28px;
+    height: 28px;
+}
+
+.local-learninglens-card-label {
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1.25;
+}
+
+.local-learninglens-card-state {
+    font-size: 11px;
+    color: #3d5a68;
+    min-height: 1em;
+}
+
+.local-learninglens-header,
+.local-learninglens-footer {
+    flex: 0 0 auto;
+}
+
+.local-learninglens-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    padding: 0.65rem 0.9rem 0.9rem;
+    border-top: 1px solid #d5dde3;
+}
+
+.local-learninglens-reset {
+    margin: 0;
+    padding: 0.4rem 0.75rem;
+    border: 1px solid #1b3a4b;
+    border-radius: 6px;
+    background: #fff;
+    color: #1b3a4b;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.local-learninglens-reset:hover,
+.local-learninglens-reset:focus-visible {
+    background: #1b3a4b;
+    color: #fff;
+    outline: none;
+}
+
+.local-learninglens-statement {
+    pointer-events: auto;
+    font-size: 12px;
+    color: #1b3a4b;
+    text-decoration: underline;
+}
+
+.local-learninglens-alt {
+    display: block;
+    margin: 0.25rem 0;
+    padding: 0.2rem 0.4rem;
+    font-size: 0.9em;
+    background: #fff3a3;
+    color: #000;
+}
+
+#local-learninglens-guide,
+#local-learninglens-mask {
+    pointer-events: none !important;
+    z-index: 1890;
+}
+
+#local-learninglens-guide {
+    position: fixed;
+    left: 0;
+    right: 0;
+    height: 2.4rem;
+    background: rgba(227, 178, 60, 0.38);
+    border-top: 2px solid #10232e;
+    border-bottom: 2px solid #10232e;
+}
+
+#local-learninglens-mask {
+    position: fixed;
+    left: 0;
+    right: 0;
+    height: 7.5rem;
+    box-shadow: 0 0 0 999vmax rgba(0, 0, 0, 0.62);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .local-learninglens-panel,
+    .local-learninglens-launcher {
+        transition: none;
+    }
+}
+
+html.local-learninglens-readaloud #region-main p,
+html.local-learninglens-readaloud #region-main li,
+html.local-learninglens-readaloud #region-main h1,
+html.local-learninglens-readaloud #region-main h2,
+html.local-learninglens-readaloud #region-main h3,
+html.local-learninglens-readaloud #region-main h4,
+html.local-learninglens-readaloud [role="main"] p,
+html.local-learninglens-readaloud [role="main"] li,
+html.local-learninglens-readaloud .course-content p,
+html.local-learninglens-readaloud .course-content li {
+    cursor: pointer;
+}
+
+.local-learninglens-readaloud-current {
+    outline: 2px solid #e3b23c;
+    outline-offset: 2px;
+    background-color: rgba(227, 178, 60, 0.28);
+    border-radius: 2px;
+}
+
+@media print {
+    #local-learninglens,
+    #local-learninglens-guide,
+    #local-learninglens-mask,
+    .local-learninglens-alt,
+    .local-learninglens-readaloud-current {
+        display: none !important;
+    }
+}
+
+/* -------------------------------------------------------------------------
+   Page adjustments (html classes from boot script / AMD)
+   ------------------------------------------------------------------------- */
+
+html.local-learninglens-text-125 {
+    font-size: 125% !important;
+}
+
+html.local-learninglens-text-150 {
+    font-size: 150% !important;
+}
+
+html.local-learninglens-text-200 {
+    font-size: 200% !important;
+}
+
+html.local-learninglens-dyslexia,
+html.local-learninglens-dyslexia body,
+html.local-learninglens-dyslexia button,
+html.local-learninglens-dyslexia input,
+html.local-learninglens-dyslexia select,
+html.local-learninglens-dyslexia textarea {
+    font-family: "OpenDyslexic", "Comic Sans MS", sans-serif !important;
+}
+
+html.local-learninglens-dyslexia #local-learninglens,
+html.local-learninglens-dyslexia #local-learninglens button,
+html.local-learninglens-dyslexia #local-learninglens input,
+html.local-learninglens-dyslexia #local-learninglens select,
+html.local-learninglens-dyslexia #local-learninglens textarea {
+    font-family: system-ui, -apple-system, "Segoe UI", sans-serif !important;
+}
+
+html.local-learninglens-dyslexia #local-learninglens .fa-solid {
+    font-family: "Font Awesome 6 Free", "Font Awesome 6 Pro", FontAwesome !important;
+    font-weight: 900 !important;
+}
+
+html.local-learninglens-spacing body {
+    line-height: 1.5 !important;
+    letter-spacing: 0.12em !important;
+    word-spacing: 0.16em !important;
+}
+
+html.local-learninglens-spacing body p {
+    margin-bottom: 2em !important;
+}
+
+html.local-learninglens-spacing #local-learninglens,
+html.local-learninglens-spacing #local-learninglens p {
+    line-height: 1.3;
+    letter-spacing: normal;
+    word-spacing: normal;
+    margin-bottom: 0;
+}
+
+html.local-learninglens-links a,
+html.local-learninglens-links [role="link"],
+html.local-learninglens-links area {
+    background-color: #fff3a3 !important;
+    color: #000 !important;
+    text-decoration: underline !important;
+    text-decoration-thickness: 3px !important;
+    text-underline-offset: 0.15em;
+    outline: 2px solid #000 !important;
+    outline-offset: 2px;
+}
+
+html.local-learninglens-links #local-learninglens a {
+    background-color: transparent !important;
+    color: #1b3a4b !important;
+    outline: none !important;
+}
+
+html.local-learninglens-pause-anim,
+html.local-learninglens-pause-anim *,
+html.local-learninglens-pause-anim *::before,
+html.local-learninglens-pause-anim *::after {
+    animation: none !important;
+    animation-duration: 0s !important;
+    animation-iteration-count: 1 !important;
+    transition: none !important;
+    transition-duration: 0s !important;
+    scroll-behavior: auto !important;
+}
+
+html.local-learninglens-hide-images img,
+html.local-learninglens-hide-images picture,
+html.local-learninglens-hide-images video,
+html.local-learninglens-hide-images canvas {
+    visibility: hidden !important;
+}
+
+html.local-learninglens-hide-images #local-learninglens img {
+    visibility: visible !important;
+}
+
+html.local-learninglens-contrast-extra {
+    filter: contrast(1.45) saturate(1.15);
+}
+
+html.local-learninglens-contrast-invert {
+    background: #fff;
+    filter: invert(1) hue-rotate(180deg);
+}
+
+html.local-learninglens-contrast-invert img,
+html.local-learninglens-contrast-invert video,
+html.local-learninglens-contrast-invert picture,
+html.local-learninglens-contrast-invert iframe,
+html.local-learninglens-contrast-invert canvas {
+    filter: invert(1) hue-rotate(180deg);
+}
+
+/* Dark / light must cover Boost .main-inner, Snap #region-main, Book/Page
+   content, and inline-coloured spans. A short chrome-only list leaves light
+   text on a white well. !important beats theme backgrounds that are not
+   themselves important. Media and SVG geometry are excluded. */
+
+html.local-learninglens-contrast-dark {
+    background: #000 !important;
+    color: #fff !important;
+    color-scheme: dark;
+}
+
+html.local-learninglens-contrast-dark body,
+html.local-learninglens-contrast-dark body *:not(img):not(video):not(picture):not(canvas):not(iframe):not(svg):not(path):not(circle):not(rect):not(line):not(polygon):not(ellipse):not(stop) {
+    background-color: #000 !important;
+    color: #fff !important;
+    border-color: #9aa0a6 !important;
+}
+
+html.local-learninglens-contrast-dark a,
+html.local-learninglens-contrast-dark a:visited,
+html.local-learninglens-contrast-dark a * {
+    color: #ffe566 !important;
+}
+
+html.local-learninglens-contrast-dark img,
+html.local-learninglens-contrast-dark video,
+html.local-learninglens-contrast-dark picture,
+html.local-learninglens-contrast-dark canvas,
+html.local-learninglens-contrast-dark iframe {
+    background-color: transparent !important;
+}
+
+html.local-learninglens-contrast-dark .local-learninglens-readaloud-current {
+    background-color: #3d3200 !important;
+    color: #fff !important;
+    outline: 2px solid #ffe566;
+}
+
+html.local-learninglens-contrast-dark.local-learninglens-links a,
+html.local-learninglens-contrast-dark.local-learninglens-links [role="link"] {
+    background-color: #ffe566 !important;
+    color: #000 !important;
+}
+
+html.local-learninglens-contrast-dark #local-learninglens .local-learninglens-launcher,
+html.local-learninglens-contrast-dark #local-learninglens .local-learninglens-panel,
+html.local-learninglens-contrast-dark #local-learninglens .local-learninglens-header,
+html.local-learninglens-contrast-dark #local-learninglens .local-learninglens-card,
+html.local-learninglens-contrast-dark #local-learninglens .local-learninglens-reset {
+    background-color: #000 !important;
+    color: #fff !important;
+    border-color: #fff !important;
+}
+
+html.local-learninglens-contrast-dark #local-learninglens .local-learninglens-card.is-active {
+    background-color: #1a1a1a !important;
+}
+
+html.local-learninglens-contrast-light {
+    background: #fff !important;
+    color: #000 !important;
+    color-scheme: light;
+}
+
+html.local-learninglens-contrast-light body,
+html.local-learninglens-contrast-light body *:not(img):not(video):not(picture):not(canvas):not(iframe):not(svg):not(path):not(circle):not(rect):not(line):not(polygon):not(ellipse):not(stop) {
+    background-color: #fff !important;
+    color: #000 !important;
+    border-color: #000 !important;
+}
+
+html.local-learninglens-contrast-light a,
+html.local-learninglens-contrast-light a:visited,
+html.local-learninglens-contrast-light a * {
+    color: #0000cc !important;
+    text-decoration: underline !important;
+}
+
+html.local-learninglens-contrast-light img,
+html.local-learninglens-contrast-light video,
+html.local-learninglens-contrast-light picture,
+html.local-learninglens-contrast-light canvas,
+html.local-learninglens-contrast-light iframe {
+    background-color: transparent !important;
+}
+
+html.local-learninglens-contrast-light .local-learninglens-readaloud-current {
+    background-color: #fff3a3 !important;
+    color: #000 !important;
+}
+
+html.local-learninglens-contrast-light #local-learninglens .local-learninglens-launcher,
+html.local-learninglens-contrast-light #local-learninglens .local-learninglens-panel,
+html.local-learninglens-contrast-light #local-learninglens .local-learninglens-header,
+html.local-learninglens-contrast-light #local-learninglens .local-learninglens-card,
+html.local-learninglens-contrast-light #local-learninglens .local-learninglens-reset {
+    background-color: #fff !important;
+    color: #000 !important;
+    border-color: #000 !important;
+}
+
+html.local-learninglens-contrast-light #local-learninglens .local-learninglens-header,
+html.local-learninglens-contrast-light #local-learninglens .local-learninglens-header * {
+    background-color: #1b3a4b !important;
+    color: #fff !important;
+    border-color: #1b3a4b !important;
+}
+
+html.local-learninglens-contrast-light #local-learninglens .local-learninglens-launcher {
+    background-color: #1b3a4b !important;
+    color: #fff !important;
+    border-color: #1b3a4b !important;
+}
