@@ -24,9 +24,21 @@ This is **not** a compliance overlay. It does not load remote scripts, does not 
 
 ## Install
 
-1. Place the `learninglens` folder in `moodle/local/learninglens`.
-2. Visit **Site administration → Notifications** and complete the install.
-3. Configure **Site administration → Plugins → Local plugins → OCA Learning Lens**.
+The plugin directory **must** be named `learninglens` (not the GitHub repository name).
+
+**From git:**
+
+```bash
+cd /path/to/moodle/local
+git clone https://github.com/opencollegearts/moodle-local_learninglens.git learninglens
+```
+
+**From ZIP:** unzip so you have `moodle/local/learninglens/version.php`.
+
+Then:
+
+1. Visit **Site administration → Notifications** and complete the install.
+2. Configure **Site administration → Plugins → Local plugins → OCA Learning Lens**.
 
 The ZIP from Moodle Marketplace can also be installed via **Site administration → Plugins → Install plugins**.
 
@@ -49,9 +61,9 @@ The ZIP from Moodle Marketplace can also be installed via **Site administration 
 | Accessibility statement URL | Optional footer link (full `http`/`https` URL only) |
 | Per-feature checkboxes | Hide individual adjustments |
 
-## Complementary to Multiple Formats
+## Complementary to Learning Prism
 
-There is no dependency. If you also use Multiple Formats (`local_multipleformats`), that plugin changes **downloadable content** (DOCX, PDF, EPUB, TTS files). Learning Lens changes **live presentation** on the current page.
+There is no dependency. If you also use [Learning Prism](https://github.com/opencollegearts/moodle-local_learningprism) (`local_learningprism`), that plugin changes **downloadable content** (DOCX, PDF, EPUB, TTS files). Learning Lens changes **live presentation** on the current page.
 
 ## Privacy
 
@@ -62,11 +74,17 @@ There is no dependency. If you also use Multiple Formats (`local_multipleformats
 
 ## Licence
 
-GNU GPL v3 or later. See the file headers. OpenDyslexic is OFL 1.1 (`thirdpartylibs.xml`).
+GNU GPL v3 or later (`LICENSE` and the file headers). OpenDyslexic is OFL 1.1 (`thirdpartylibs.xml`).
+
+## Source, issues, and docs
+
+- Source: https://github.com/opencollegearts/moodle-local_learninglens
+- Issue tracker: https://github.com/opencollegearts/moodle-local_learninglens/issues
+- Documentation: this README
+
+The repository root **is** the plugin root (`version.php` at the top), following Moodle’s `moodle-{plugintype}_{pluginname}` naming.
 
 ## Development
-
-Repository layout matches Moodle plugins: this folder is the plugin root (`version.php` at the top). Suggested Git name: `moodle-local_learninglens`.
 
 ```bash
 # From Moodle root, after install:
@@ -81,4 +99,4 @@ The binder is `amd/src/widget-lazy.js`. The `-lazy` suffix keeps it out of Moodl
 
 ## Architecture (short)
 
-A head hook injects a tiny boot script (applies saved `html` classes before first paint). Footer PHP renders the Mustache UI and loads AMD `local_learninglens/widget-lazy` after `window.load` (no `js_call_amd` / `js_pending`). Preferences are sanitised against a whitelist on write and on read.
+A head hook injects a tiny boot script (applies saved `html` classes before first paint). Footer PHP renders the Mustache UI and loads AMD `local_learninglens/widget-lazy` after `window.load` (no `js_call_amd` / `js_pending`). Preferences are sanitised against a whitelist on write and on read. Page-level presentation classes are prefixed `local-learninglens-` so they cannot collide with other plugins.
