@@ -1,5 +1,7 @@
 <p align="center">
-  <img src="pix/icon.png" alt="OCA Learning Lens" width="160" height="160">
+  <img src="pix/oca-logo.png" alt="Open College of the Arts" width="140" height="140">
+  &nbsp;&nbsp;
+  <img src="pix/icon.png" alt="Learning Lens" width="140" height="140">
 </p>
 
 # OCA Learning Lens
