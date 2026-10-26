@@ -129,7 +129,8 @@
 }
 
 .local-learninglens-panel[hidden] {
-    display: none !important;
+    /* Themes sometimes override [hidden]; the panel must stay closed. */
+    display: none !important; /* stylelint-disable-line declaration-no-important */
 }
 
 .local-learninglens-panel {
@@ -137,8 +138,9 @@
     bottom: 5.5rem;
     display: flex;
     flex-direction: column;
-    width: min(22.5rem, calc(100vw - 2rem));
-    max-height: min(36rem, calc(100vh - 7rem));
+    width: 22.5rem;
+    max-width: calc(100vw - 2rem);
+    max-height: 36rem;
     overflow: hidden;
     background: #fff;
     color: #10232e;
@@ -319,7 +321,7 @@
 
 #local-learninglens-guide,
 #local-learninglens-mask {
-    pointer-events: none !important;
+    pointer-events: none !important; /* stylelint-disable-line declaration-no-important */
     z-index: 1890;
 }
 
@@ -374,13 +376,21 @@ html.local-learninglens-readaloud .course-content li {
     #local-learninglens-mask,
     .local-learninglens-alt,
     .local-learninglens-readaloud-current {
-        display: none !important;
+        display: none !important; /* stylelint-disable-line declaration-no-important */
+    }
+}
+
+@media (max-height: 43rem) {
+    .local-learninglens-panel {
+        max-height: calc(100vh - 7rem);
     }
 }
 
 /* -------------------------------------------------------------------------
    Page adjustments (html classes from boot script / AMD)
+   These must beat theme rules on Boost and Snap, so !important is required.
    ------------------------------------------------------------------------- */
+/* stylelint-disable declaration-no-important, max-line-length */
 
 html.local-learninglens-text-125 {
     font-size: 125% !important;
@@ -566,7 +576,7 @@ html.local-learninglens-contrast-light body *:not(img):not(video):not(picture):n
 html.local-learninglens-contrast-light a,
 html.local-learninglens-contrast-light a:visited,
 html.local-learninglens-contrast-light a * {
-    color: #0000cc !important;
+    color: #00c !important;
     text-decoration: underline !important;
 }
 
@@ -605,3 +615,5 @@ html.local-learninglens-contrast-light #local-learninglens .local-learninglens-l
     color: #fff !important;
     border-color: #1b3a4b !important;
 }
+
+/* stylelint-enable declaration-no-important, max-line-length */

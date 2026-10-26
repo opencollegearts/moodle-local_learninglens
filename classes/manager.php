@@ -116,7 +116,7 @@ class manager {
      * Drop unknown keys/values. Never persist raw CSS.
      *
      * @param mixed $prefs Array, JSON string, or anything else.
-     * @return array Sanitized associative array of allowed prefs.
+     * @return array Sanitised associative array of allowed prefs.
      */
     public static function sanitize_prefs($prefs): array {
         if (is_string($prefs)) {

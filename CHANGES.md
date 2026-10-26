@@ -1,6 +1,6 @@
 # Changelog
 
-## 1.0.0 (2026102600)
+## 1.0.0 (2026102601)
 
 - First release of OCA Learning Lens for Moodle 4.5+.
 - On-page accessibility adjustments: contrast, dyslexia-friendly font, spacing, links, text size, pause animations, hide images, reading guide, reading mask, read aloud, and speech speed.

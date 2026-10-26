@@ -24,7 +24,7 @@ Learning Lens does not load remote scripts, does not rewrite page content, and d
 
 ## Requirements
 
-- Moodle 4.5 or 5.0
+- Moodle 4.5 to 5.3
 - No extra plugins or paid subscriptions
 
 ## Install

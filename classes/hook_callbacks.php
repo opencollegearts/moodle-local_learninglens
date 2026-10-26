@@ -34,6 +34,7 @@ class hook_callbacks {
      * Load the boot script and AMD widget on HTML pages.
      *
      * @param before_standard_head_html_generation $hook
+     * @return void
      */
     public static function before_standard_head_html_generation(before_standard_head_html_generation $hook): void {
         hook_helper::before_html_head($hook);
@@ -43,6 +44,7 @@ class hook_callbacks {
      * Render widget markup and load the binder AMD in the footer.
      *
      * @param before_standard_footer_html_generation $hook
+     * @return void
      */
     public static function before_standard_footer_html_generation(before_standard_footer_html_generation $hook): void {
         hook_helper::before_footer($hook);

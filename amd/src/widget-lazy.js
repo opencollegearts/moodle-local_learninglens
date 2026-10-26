@@ -125,7 +125,9 @@ define([], function() {
 
     var applyHtmlClasses = function() {
         var html = document.documentElement;
-        var drop = /^(local-learninglens-|local-a11ywidget-|a11y-contrast-|a11y-dyslexia|a11y-spacing|a11y-links|a11y-text-|a11y-pause-anim|a11y-hide-images|a11y-reading-guide|a11y-reading-mask|a11y-readaloud)/;
+        var drop = new RegExp('^(local-learninglens-|local-a11ywidget-|a11y-contrast-|' +
+            'a11y-dyslexia|a11y-spacing|a11y-links|a11y-text-|a11y-pause-anim|' +
+            'a11y-hide-images|a11y-reading-guide|a11y-reading-mask|a11y-readaloud)');
         html.className = (html.className || '').split(/\s+/).filter(function(name) {
             return name && !drop.test(name);
         }).join(' ');
@@ -476,7 +478,6 @@ define([], function() {
         var sentences = splitSentences(text);
         var s;
         var piece;
-        var rest;
         var cut;
         for (s = 0; s < sentences.length; s++) {
             piece = sentences[s];

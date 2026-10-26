@@ -52,6 +52,7 @@ class provider implements
      * Export the widget preference for a user.
      *
      * @param int $userid The user to export preferences for.
+     * @return void
      */
     public static function export_user_preferences(int $userid): void {
         $pref = get_user_preferences(manager::PREFERENCE, null, $userid);

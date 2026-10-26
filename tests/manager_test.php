@@ -30,6 +30,8 @@ class manager_test extends \advanced_testcase {
 
     /**
      * Unknown keys and raw CSS are dropped.
+     *
+     * @return void
      */
     public function test_sanitize_prefs_drops_unknown_keys_and_css(): void {
         $raw = [
@@ -47,6 +49,8 @@ class manager_test extends \advanced_testcase {
 
     /**
      * Invalid enums, sizes, and rates are dropped.
+     *
+     * @return void
      */
     public function test_sanitize_prefs_rejects_invalid_enums_and_sizes(): void {
         $out = manager::sanitize_prefs([
@@ -63,6 +67,8 @@ class manager_test extends \advanced_testcase {
 
     /**
      * JSON strings and bool-like values are accepted.
+     *
+     * @return void
      */
     public function test_sanitize_prefs_accepts_json_and_bool_coercion(): void {
         $json = json_encode([
@@ -86,6 +92,8 @@ class manager_test extends \advanced_testcase {
 
     /**
      * Preference cleaner returns whitelist JSON only.
+     *
+     * @return void
      */
     public function test_clean_preference_returns_whitelisted_json_only(): void {
         $raw = json_encode([
@@ -99,6 +107,8 @@ class manager_test extends \advanced_testcase {
 
     /**
      * Oversized JSON payloads are rejected.
+     *
+     * @return void
      */
     public function test_sanitize_prefs_rejects_oversized_json(): void {
         $huge = '{"dyslexia":true,"pad":"' . str_repeat('x', manager::PREFS_MAX_LENGTH) . '"}';
@@ -107,6 +117,8 @@ class manager_test extends \advanced_testcase {
 
     /**
      * HTML classes stay on the namespaced whitelist.
+     *
+     * @return void
      */
     public function test_html_classes_match_whitelist(): void {
         $classes = manager::html_classes([
@@ -129,6 +141,8 @@ class manager_test extends \advanced_testcase {
 
     /**
      * Default values do not emit HTML classes.
+     *
+     * @return void
      */
     public function test_html_classes_omit_defaults(): void {
         $this->assertSame([], manager::html_classes([
@@ -140,6 +154,8 @@ class manager_test extends \advanced_testcase {
 
     /**
      * Admin feature flags control enabled_features().
+     *
+     * @return void
      */
     public function test_enabled_features_respects_config(): void {
         $this->resetAfterTest();
@@ -169,6 +185,8 @@ class manager_test extends \advanced_testcase {
 
     /**
      * Statement URL must be http or https.
+     *
+     * @return void
      */
     public function test_statementurl_allows_http_only(): void {
         $this->resetAfterTest();
