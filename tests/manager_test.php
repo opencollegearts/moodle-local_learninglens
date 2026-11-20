@@ -16,8 +16,6 @@
 
 namespace local_learninglens;
 
-defined('MOODLE_INTERNAL') || die();
-
 /**
  * Manager sanitization and feature-flag tests.
  *
@@ -27,7 +25,6 @@ defined('MOODLE_INTERNAL') || die();
  * @covers     \local_learninglens\manager
  */
 class manager_test extends \advanced_testcase {
-
     /**
      * Unknown keys and raw CSS are dropped.
      *

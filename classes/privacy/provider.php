@@ -16,8 +16,6 @@
 
 namespace local_learninglens\privacy;
 
-defined('MOODLE_INTERNAL') || die();
-
 use core_privacy\local\metadata\collection;
 use core_privacy\local\request\user_preference_provider;
 use core_privacy\local\request\writer;
@@ -33,7 +31,6 @@ use local_learninglens\manager;
 class provider implements
     \core_privacy\local\metadata\provider,
     user_preference_provider {
-
     /**
      * Describe stored data.
      *

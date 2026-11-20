@@ -16,8 +16,6 @@
 
 namespace local_learninglens;
 
-defined('MOODLE_INTERNAL') || die();
-
 /**
  * Config, preference sanitization, and JS payload helpers.
  *
@@ -131,8 +129,10 @@ class manager {
 
         $out = [];
 
-        if (isset($prefs['contrast']) && is_string($prefs['contrast'])
-                && in_array($prefs['contrast'], self::CONTRAST_VALUES, true)) {
+        if (
+            isset($prefs['contrast']) && is_string($prefs['contrast'])
+                && in_array($prefs['contrast'], self::CONTRAST_VALUES, true)
+        ) {
             $out['contrast'] = $prefs['contrast'];
         }
 

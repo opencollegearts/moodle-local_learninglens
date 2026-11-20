@@ -22,8 +22,6 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-defined('MOODLE_INTERNAL') || die();
-
 /**
  * Set default config values on install.
  *
@@ -33,10 +31,12 @@ function xmldb_local_learninglens_install(): void {
     set_config('enable', 1, 'local_learninglens');
     set_config('position', 'left', 'local_learninglens');
     set_config('statementurl', '', 'local_learninglens');
-    foreach ([
+    foreach (
+        [
         'contrast', 'dyslexia', 'spacing', 'links', 'textsize',
         'pauseanim', 'hideimages', 'readingguide', 'readingmask', 'readaloud',
-    ] as $feature) {
+        ] as $feature
+    ) {
         set_config('enable' . $feature, 1, 'local_learninglens');
     }
 }

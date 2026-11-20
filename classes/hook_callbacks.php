@@ -16,8 +16,6 @@
 
 namespace local_learninglens;
 
-defined('MOODLE_INTERNAL') || die();
-
 use core\hook\output\before_standard_footer_html_generation;
 use core\hook\output\before_standard_head_html_generation;
 use local_learninglens\output\hook_helper;

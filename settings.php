@@ -65,10 +65,12 @@ if ($hassiteconfig) {
         get_string('settings:featuresheading_desc', 'local_learninglens')
     ));
 
-    foreach ([
+    foreach (
+        [
         'contrast', 'dyslexia', 'spacing', 'links', 'textsize',
         'pauseanim', 'hideimages', 'readingguide', 'readingmask', 'readaloud',
-    ] as $feature) {
+        ] as $feature
+    ) {
         $settings->add(new admin_setting_configcheckbox(
             'local_learninglens/enable' . $feature,
             get_string('settings:enable' . $feature, 'local_learninglens'),

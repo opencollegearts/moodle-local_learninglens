@@ -884,6 +884,11 @@ define([], function() {
                     }
                     return;
                 }
+                // Boost-based themes emit the footer hook output inside a hidden
+                // footer popover, so move the widget to <body> to keep it visible.
+                if (document.body && root.parentNode !== document.body) {
+                    document.body.appendChild(root);
+                }
                 if (root.getAttribute('data-learninglens-bound') === '1') {
                     return;
                 }

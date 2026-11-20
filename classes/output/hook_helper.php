@@ -16,8 +16,6 @@
 
 namespace local_learninglens\output;
 
-defined('MOODLE_INTERNAL') || die();
-
 use core\hook\output\before_standard_footer_html_generation;
 use core\hook\output\before_standard_head_html_generation;
 use local_learninglens\manager;
@@ -107,6 +105,7 @@ class hook_helper {
             self::$headinitialised = true;
         } catch (\Throwable $e) {
             // Do not call debugging() — Open LMS/Whoops promotes notices to fatals.
+            // phpcs:ignore moodle.PHP.ForbiddenFunctions.FoundWithAlternative
             error_log('local_learninglens hook_helper head: ' . $e->getMessage());
         }
     }
@@ -139,6 +138,16 @@ class hook_helper {
             // dumps every non-lazy AMD file into core/first.js. An anonymous
             // factory in that combo aborts core/first and ghosts navigation.
             // widget-lazy is fetched on demand after load, with no pending token.
+            // Boost-based themes render this hook inside a hidden footer popover
+            // (theme_boost/footer), which hides the fixed-position launcher.
+            // Move the widget to <body> immediately after it is output.
+            $hook->add_html(
+                '<script>(function(){try{' .
+                'var e=document.getElementById("local-learninglens");' .
+                'if(e&&document.body&&e.parentNode!==document.body){document.body.appendChild(e);}' .
+                '}catch(x){}})();</script>'
+            );
+
             $hook->add_html(
                 '<script>' .
                 '(function(){function boot(){try{' .
@@ -151,6 +160,7 @@ class hook_helper {
             );
             self::$footerinitialised = true;
         } catch (\Throwable $e) {
+            // phpcs:ignore moodle.PHP.ForbiddenFunctions.FoundWithAlternative
             error_log('local_learninglens hook_helper footer: ' . $e->getMessage());
         }
     }

@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.0.1 (2026112001)
+
+- Fix: the launcher button was not visible in Boost and Boost-based themes. Boost renders the footer hook output inside its hidden footer popover, so the widget is now moved to `<body>` when it is output.
+- Code style fixes to meet the Moodle coding standard (no functional change).
+
 ## 1.0.0 (2026102601)
 
 - First release of OCA Learning Lens for Moodle 4.5+.
